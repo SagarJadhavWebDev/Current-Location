@@ -1,0 +1,68 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/> 
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/> 
+<title>Reverse Geocoding</title> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+<script>
+  const apikey = '9a87ae61010f4a1f9a038f65c16ac884';
+ //try to get user current location using getCurrentPosition() method
+ navigator.geolocation.getCurrentPosition(function(position){ 
+  lati = position.coords.latitude;
+  langu = position.coords.longitude;
+  
+  var latitude = lati;
+  var longitude = langu;
+
+  var api_url = 'https://api.opencagedata.com/geocode/v1/json'
+
+  var request_url = api_url
+    + '?'
+    + 'key=' + apikey
+    + '&q=' + encodeURIComponent(latitude + ',' + longitude)
+    + '&pretty=1'
+    + '&no_annotations=1';
+
+  // see full list of required and optional parameters:
+  // https://opencagedata.com/api#forward
+
+  var request = new XMLHttpRequest();
+  request.open('GET', request_url, true);
+
+  request.onload = function() {
+    // see full list of possible response codes:
+    // https://opencagedata.com/api#codes
+
+    if (request.status == 200){ 
+      // Success!
+      var data = JSON.parse(request.responseText);
+      alert(data.results[0].formatted);
+
+    } else if (request.status <= 500){ 
+      // We reached our target server, but it returned an error
+                           
+      console.log("unable to geocode! Response code: " + request.status);
+      var data = JSON.parse(request.responseText);
+      console.log(data.status.message);
+    } else {
+      console.log("server error");
+    }
+  };
+
+  request.onerror = function() {
+    // There was a connection error of some sort
+    console.log("unable to connect to server");        
+  };
+
+  request.send();  // make the request
+                      });         
+</script>
+
+
+</head> 
+<body> 
+
+</body> 
+</html> 

@@ -28,23 +28,34 @@
   // see full list of required and optional parameters:
   // https://opencagedata.com/api#forward
 
-  var request = new XMLHttpRequest();
+  let request = new XMLHttpRequest();
   request.open('GET', request_url, true);
 
   request.onload = function() {
     // see full list of possible response codes:
     // https://opencagedata.com/api#codes
 
-    if (request.status == 200){ 
+    if (request.status == 200 ){ 
       // Success!
-      var data = JSON.parse(request.responseText);
-      alert(data.results[0].formatted);
-
+      let data = JSON.parse(request.responseText);
+      let  currentCity = data.results[0].components.city;
+       if ( currentCity == undefined){
+       alert("Can't Get Your Location Please Turn On GPS")
+       }
+         else  if(currentCity == "Navi Mumbai" ){
+        alert("you are in " + currentCity)
+        }
+        else if (currentCity == "Mumbai"){
+        alert("you are in " + currentCity)
+        }
+  
+        
+       
     } else if (request.status <= 500){ 
       // We reached our target server, but it returned an error
                            
       console.log("unable to geocode! Response code: " + request.status);
-      var data = JSON.parse(request.responseText);
+      let data = JSON.parse(request.responseText);
       console.log(data.status.message);
     } else {
       console.log("server error");

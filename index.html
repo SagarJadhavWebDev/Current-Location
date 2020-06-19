@@ -48,10 +48,11 @@
       let data = JSON.parse(request.responseText);
       let  currentCity = data.results[0].components.city;
        if ( currentCity == undefined){
-
+       $(".load").show();
        location.reload();
        }
          else  if(currentCity == "Navi Mumbai" ){
+                $(".load").hide();
         alert("you are in " + currentCity)
                 $("#in").val(currentCity);
         }
@@ -163,6 +164,27 @@ text-decoration:none;
   transform: scale(0.1);
 }
 
+.load{
+  position:fixed;
+  top:50%;
+  left:45%;
+  height: 40px;
+  width: 40px;
+  background: rgba(0, 0, 0, .4);
+  border-radius: 50%;
+  border-top: 2px solid #1D9AF2;
+  border-right: 2px solid transparent;
+  border-bottom:none;
+  border-left:none;
+  z-index:999;
+  animation: spinner5 700ms linear infinite;
+}
+
+@keyframes spinner5 {
+    to {
+      transform: rotate(360deg);
+    }
+}
 
 
 </style>
@@ -171,7 +193,7 @@ text-decoration:none;
 <header class="text-gray-500  bg-white body-font">
 <br>
   <div class="container mx-auto flex flex-wrap p-2 flex-col md:flex-row -mt-6 items-center">
-<i class="mim font-hairline fa fa-bars w3-text-black w3-xlarge -mb-2 m-4 mar w3-display-topleft"></i>
+<i class="mim font-hairline fa fa-bars w3-text-dark-grey w3-xlarge -mb-2 m-4 mar w3-display-topleft"></i>
     <a class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center  mb-4 md:mb-0" >
      <img class="Im  w3-round-xxlarge" src="https://image.flaticon.com/icons/svg/2921/2921855.svg">
             <span class="ml-3 mt-5 text-gray-800 w3-large ">Farm  Basket</span>
@@ -179,7 +201,7 @@ text-decoration:none;
  <img src="https://image.flaticon.com/icons/png/512/145/145867.png"  class="mim2 bg-gray-300 p-1  w3-round-xxlarge mr-3 mar2 w3-display-topright">
      </div>
 </header>
-
+<button class="load"></button>
 <div id="myCarousel " class="carousel slide  " data-ride="carousel">
   <!-- Indicators -->
   <ol class="w3-tiny mt-8 carousel-indicators">
@@ -213,9 +235,8 @@ text-decoration:none;
 <div class="p-2 mb-5 t w-1/2 sm:w-1/2 md:h-80 md:w-1/2  w3-animate-zoom   w3-round-xlarge   ">
  <div class="    w3-card-4  rounded-lg overflow-hidden text-center relative">
 <img src=" https://image.shutterstock.com/image-photo/fruits-vegetables-isolated-on-white-260nw-110036279.jpg" class="p-2 w3-tiny w3-round-large inside">
-<label class="w3-text-black text-center w3-tiny p-1 "><b>Super Value Veggies full vegetables Basket</b></label>
-<br>
-
+<label class="font-bold mt-2"><i class="fa mr-1 w3-small fa-rupee-sign"></i>699</label>
+<label class="w3-text-black text-center mb-5 w3-tiny p-1 "><b>Super Value Veggies full vegetables Basket</b></label>
 <br>
 <center>
  <a class=" w3-green w3-hover-blue hov font-bold  mb-6 w3-round-large w3-padding w3-small text-center">
@@ -227,8 +248,8 @@ text-decoration:none;
 <div class="p-2 mb-5  t w-1/2 sm:w-1/2 md:h-80 md:w-1/2  w3-animate-zoom   w3-round-xlarge   ">
  <div class="    w3-card-4  rounded-lg overflow-hidden text-center relative">
 <img src="  https://image.shutterstock.com/image-photo/composition-vegetables-fruits-wicker-basket-260nw-88218493.jpg" class="p-2 w3-tiny w3-round-large inside">
-<label class="w3-text-black text-center w3-tiny p-1 "><b>Super Value Veggies full vegetables Basket</b></label>
-<br>
+<label class="font-bold mt-2"><i class="fa mr-1 w3-small fa-rupee-sign"></i>699</label>
+<label class="w3-text-black mb-5 text-center w3-tiny p-1 "><b>Super Value Veggies full vegetables Basket</b></label>
 <br>
 <center>
  <a class="hov w3-green w3-hover-blue  font-bold  mb-6 w3-round-large w3-small w3-padding text-center">
@@ -237,57 +258,7 @@ text-decoration:none;
  </div>
  </div>
        
- <div class="p-2 t mb:5 w-1/2 sm:w-1/2 md:h-80 md:w-1/2  w3-animate-zoom   w3-round-xlarge   ">
- <div class="    w3-card-4  rounded-lg overflow-hidden text-center relative">
- <img src=" https://image.shutterstock.com/image-photo/set-different-fruits-vegetables-isolated-260nw-141521095.jpg" class="p-2 w3-tiny w3-round-large inside">
- <label class="w3-text-black text-center w3-tiny p-1 "><b>Super Value Veggies full vegetables Basket</b></label>
- <br>
- <br>
- <center>
- <a class="hov w3-green w3-hover-blue  font-bold  mb-6 w3-round-large w3-small w3-padding text-center">
- <i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;Buy Now</a></center>
- <br>
- </div>
- </div>
- 
- <div class="p-2 mb-5 t w-1/2 sm:w-1/2 md:h-80 md:w-1/2  w3-animate-zoom   w3-round-xlarge   ">
- <div class="    w3-card-4  rounded-lg overflow-hidden text-center relative">
- <img src="https://image.shutterstock.com/image-photo/fresh-vegetables-wooden-bucket-leaf-260nw-531046411.jpg" class="p-2 w3-tiny w3-round-large inside">
- <label class="w3-text-black text-center w3-tiny p-1 "><b>Super Value Veggies full vegetables Basket</b></label>
- <br>
- <br>
- <center>
- <a class="hov w3-green w3-hover-blue  font-bold  mb-6 w3-round-large w3-small w3-padding text-center">
- <i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;Buy Now</a></center>
- <br>
- </div>
- </div>
- 
- <div class="p-2 mb-5 t w-1/2 sm:w-1/2 md:h-80 md:w-1/2  w3-animate-zoom   w3-round-xlarge   ">
- <div class="    w3-card-4  rounded-lg overflow-hidden text-center relative">
- <img src="https://image.shutterstock.com/image-photo/assortment-fresh-fruits-vegetables-isolated-260nw-145546285.jpg" class="p-2 w3-tiny w3-round-large inside">
- <label class="w3-text-black text-center w3-tiny p-1 "><b>Super Value Veggies full vegetables Basket</b></label>
- <br>
- <br>
- <center>
- <a class="hov w3-green w3-hover-blue  font-bold  mb-6 w3-round-large w3-small w3-padding text-center">
- <i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;Buy Now</a></center>
- <br>
- </div>
- </div>
- 
- <div class="p-2 mb-5 t w-1/2 sm:w-1/2 md:h-80 md:w-1/2  w3-animate-zoom   w3-round-xlarge   ">
- <div class="    w3-card-4  rounded-lg overflow-hidden text-center relative">
- <img src="https://image.shutterstock.com/image-photo/healthy-food-selection-shopping-bag-260nw-1321603421.jpg" class="p-2 w3-tiny w3-round-large inside">
- <label class="w3-text-black text-center w3-tiny p-1 "><b>Super Value Veggies full vegetables Basket</b></label>
- <br>
- <br>
- <center>
- <a class="hov w3-green w3-hover-blue  font-bold  mb-6 w3-round-large w3-small w3-padding text-center">
- <i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;Buy Now </a></center>
- <br>
- </div>
- </div>
+
        
  </div>
 
